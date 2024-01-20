@@ -2,15 +2,15 @@ import os
 import csv
 
 
-months = 0
-budget_data = /Users\samka\OneDrive\Documents\GitHub\python-challenge\PyBank\Resources\bank.txt
 # Set path for file
-csvpath = os.path.join(budget_data.csv)
+csvpath = os.path.join(bank.main.py.csv)
 
 # Open the CSV using the UTF-8 encoding
 with open(csvpath, encoding='UTF-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-    csv_header = next(csvreader)
+    next(csvreader)
+
+    months = 0
     # Loop through to tally the months
     for row in csvreader:
         date = row[0]
