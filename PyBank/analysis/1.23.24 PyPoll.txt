@@ -33,48 +33,29 @@ with open(INPUT_CSV_PATH) as csv_file:
 
 total_votes = sum(candidate_votes.values())
 
-# winner = max(candidate_votes, key=candidate_votes.get)
-winner = "Katie"
-popular_vote = -1
+winner = max(candidate_votes, key=candidate_votes.get)
 
 for candidate, votes in candidate_votes.items():
     percentage = (votes / total_votes) * 100
-    print(f"{candidate}: {percentage:.3f}% ({votes})") 
-
-    if votes > popular_vote:
-        popular_vote = votes
-        winner = candidate
-
-
-# print(f"{candidate}: {Candidate_total_votes:.3f}% ({Candidate_total_votes})\n")
+print(f"{candidate}: {candidate_percent_votes:.3f}% ({candidate_total_votes})\n")     
 print("election results")
 print(".......................")
 print(f"total_votes: {total_votes}\n")
 print(".......................")
-
-
-# print(candidate)
-# for candidate_percent_votes in candidate:
-#     print(candidate_percent_votes)
-    # print(f"{candidate_percent_votes}: {candidate_percent_votes}%")
-    # print(f"{candidate}: {candidate_percent_votes:.3f}% ({candidate_percent_votes})")
+for candidate_percent_votes in candidate:
+    print(f"{candidate}: {candidate_percent_votes[candidate]:.3f}% ({candidate_total_votes[candidate]})")
 print(".......................")
-print(f"Winner: {winner}\n")
+print(f"Winner: {Winner}\n")
 print(".......................")
 
 output_file = "output.txt"
 with open(output_file, "w") as output_file:
     output_file.write("election results\n")
     output_file.write("......................\n")
-    for candidate, votes in candidate_votes.items():
-        percentage = (votes / total_votes) * 100
-        output_file.write(f"{candidate}: {percentage:.3f}% ({votes})\n")
-    output_file.write("......................\n")
     output_file.write(f"total_votes: {total_votes}\n")
     output_file.write(".......................\n")
-    # for candidate_percent_votes in candidate:
-    #     output_file.write(f"{candidate}: {candidate_percent_votes[candidate]:.3f}% ({Candidate_total_votes[candidate]})")
+    for candidate_percent_votes in candidate:
+        output_file.write(f"{candidate}: {candidate_percent_votes[candidate]:.3f}% ({Candidate_total_votes[candidate]})")
     output_file.write(".......................\n")
-    output_file.write(f"Winner: {winner}\n")
+    output_file.write(f"Winner: {Winner}\n")
     output_file.write(".......................\n")
-

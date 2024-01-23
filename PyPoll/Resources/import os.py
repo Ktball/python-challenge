@@ -15,20 +15,28 @@ with open('\Users\samka\OneDrive\Documents\GitHub\python-challenge\PyBank\main.p
     lines = file.readlines()
     lines = lines[1:]
     for line in lines:
-     data = [dict(zip(header,line.strip().split(',')))for line in lines [1:]]
+     data = [dict(zip(header,line.strip().split(',')))for line in lines [1:]
 
-total_votes = len(data)
-
-candidates = set(entry['candidate'] for entry in data)
 # Create an empty dictionary to store the candidate names and vote counts
 candidate_votes = {}
-for entry in data:
-    candidate = entry["candidate"]
-    candidate_votes["candidate"] = candidate_votes.get(candidate, 0) + 1
 
-percentage_votes = {candidate: votes / total_votes * 100 for candidate, votes in candidate_votes}
+# Iterate through the list of votes
+for vote in votes:
+    # Check if the candidate name is already in the dictionary
+    if vote in candidate_votes:
+        # If yes, increment the vote count for that candidate
+        candidate_votes[vote] += 1
+    else:
+        # If no, add the candidate name to the dictionary with an initial vote count of 1
+        candidate_votes[vote] = 1
 
-winner = max(candidate_votes, key-candidate_votes.get)
+total_votes = sum(candidates_votes.value())
+
+candidate_percentages = {}
+
+# Print the total votes for each candidate
+for candidate, votes in candidate_votes.items():
+    print(f"{candidate}: {votes} votes")
              
 print("election results")
 print(".......................")
